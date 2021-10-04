@@ -14,13 +14,13 @@ define-command -override delete-scratch-message -docstring 'delete scratch messa
   }
 }
 
-declare-option -docstring 'find command' str find_command 'fd --type file'
+declare-option -docstring 'find file command' str find_file_command 'fd --type file'
 
-define-command -override find -menu -params 1 -shell-script-candidates %opt{find_command} -docstring 'open file' %{
+define-command -override find-file -menu -params 1 -shell-script-candidates %opt{find_file_command} -docstring 'open file' %{
   edit %arg{1}
 }
 
-alias global f find
+alias global f find-file
 
 define-command -override open-kakrc -docstring 'open kakrc' %{
   edit "%val{config}/kakrc"
